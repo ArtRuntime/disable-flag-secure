@@ -1,0 +1,55 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+
+}
+
+android {
+    namespace 'com.dhehydwyhdg.disable_flag_secure'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.dhehydwyhdg.disable_flag_secure"
+        minSdk 26
+        targetSdk 35
+        versionCode 2
+        versionName "2.0.0"
+        resConfigs "en"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    packagingOptions {
+        exclude "/META-INF/*.kotlin_module"
+        exclude "**/kotlin/**"
+    }
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+dependencies {
+
+    implementation libs.androidx.annotation.jvm
+    compileOnly fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation("com.highcapable.yukihookapi:api:1.2.1")
+    ksp("com.highcapable.yukihookapi:ksp-xposed:1.2.1")
+
+
+}

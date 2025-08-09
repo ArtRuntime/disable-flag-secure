@@ -1,0 +1,13 @@
+[versions]
+agp = "8.10.1"
+kotlin = "2.1.21"
+annotationJvm = "1.9.1"
+
+[libraries]
+androidx-annotation-jvm = { group = "androidx.annotation", name = "annotation-jvm", version.ref = "annotationJvm" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version = "2.1.21-2.0.1" }
+
